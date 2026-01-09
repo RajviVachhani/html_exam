@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Task4</title>
+    <title>Task6</title>
  
     <style>
       
@@ -16,24 +16,31 @@
         }
     </style>
  
-    <script>
-        function showText() {
-            let file = document.getElementById("fileUpload").value;
-            let message = document.getElementById("message");
- 
-            if (file.endsWith(".xlsx") || file.endsWith(".xlsb ") || file.endsWith(".xlsm") || file.endsWith(".xls")) {
-                message.innerHTML =
-                    "File is Excel <br>File type = " + file.split('.').pop();
-            } 
-            else if (input.files.length == 0) {
+ <script>
+    function showText() {
+        let file = document.getElementById("fileUpload");
+        let message = document.getElementById("message");
+    
+        if (file.files.length === 0) {
             alert("Please select a file");
             return;
         }
-            else {
-                message.innerHTML = "File is Not Excel";
-            }
+    
+        let fileName = file.value.toLowerCase();
+    
+        if (
+            fileName.endsWith(".xlsx") || fileName.endsWith(".xlsb") ||
+            fileName.endsWith(".xlsm") ||
+            fileName.endsWith(".xls")
+        ) {
+            message.innerHTML =
+                "File is Excel <br>File type = " + fileName.split('.').pop();
+        } else {
+            message.innerHTML = "File is Not Excel";
         }
+    }
     </script>
+    
 
 <script>
     function download() {
