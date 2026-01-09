@@ -12,7 +12,6 @@
             border: 1px solid black;
             padding: 20px;
             width: 30%;
-            
         }
     </style>
  
@@ -29,9 +28,7 @@
         let fileName = file.value.toLowerCase();
     
         if (
-            fileName.endsWith(".xlsx") || fileName.endsWith(".xlsb") ||
-            fileName.endsWith(".xlsm") ||
-            fileName.endsWith(".xls")
+            fileName.endsWith(".xlsx") || fileName.endsWith(".xlsb") ||  fileName.endsWith(".xlsm") ||     fileName.endsWith(".xls")
         ) {
             message.innerHTML =
                 "File is Excel <br>File type = " + fileName.split('.').pop();
@@ -76,7 +73,6 @@
     <input type="file" id="file">
     <br><br>
     <button onclick="download()">Download File</button>
-
 
  
 </body>
