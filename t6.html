@@ -6,14 +6,13 @@
     <title>Task4</title>
  
     <style>
-        table, th, td {
-            border-collapse: collapse;
-            width: 100%;
-            border: 1px solid #000;
-            padding: 10px;
-        }
-        h1 {
-            text-align: center;
+      
+
+        body{
+            border: 1px solid black;
+            padding: 20px;
+            width: 30%;
+            
         }
     </style>
  
@@ -25,38 +24,53 @@
             if (file.endsWith(".xlsx") || file.endsWith(".xlsb ") || file.endsWith(".xlsm") || file.endsWith(".xls")) {
                 message.innerHTML =
                     "File is Excel <br>File type = " + file.split('.').pop();
-            } else {
+            } 
+            else if (input.files.length == 0) {
+            alert("Please select a file");
+            return;
+        }
+            else {
                 message.innerHTML = "File is Not Excel";
             }
         }
     </script>
-</head>
-<body>
- 
-<table>
-    <tr>
-        <th><h1>Allow Only if Excel</h1></th>
-    </tr>
- 
-    <tr>
-        <td>
-            <h3>Select Excel:</h3>
- 
-            <input type="file" id="fileUpload" ><br><br>
- 
-            <input type="button" value="Upload" onclick="showText()">
- 
-            <p id="message"></p>
-        </td>
-    </tr>
-</table>
 
-<a href="img2.jpg" download="Image">
-    Image
-</a>
-<a href="HTML Final Exam.pdf" download="PDf">
-    PDF
-</a>
+<script>
+    function download() {
+    
+        var input = document.getElementById("file");
+    
+        if (input.files.length == 0) {
+            alert("Please select a file");
+            return;
+        }
+    
+        var file = input.files[0];
+    
+        var link = document.createElement("a");
+        link.href = URL.createObjectURL(file);
+        link.download = file.name;
+    
+        link.click();
+    }
+    </script>
+</head>
+<body> 
+        <h2>Select Excel:</h2>
+
+        
+        <input type="file" id="fileUpload" ><br><br>
+        <input type="button" value="Upload" onclick="showText()">
+        <p id="message"></p>
+        <br><br>
+        
+<h2>Upload and Download File:</h2>
+
+    <input type="file" id="file">
+    <br><br>
+    <button onclick="download()">Download File</button>
+
+
  
 </body>
 </html>
